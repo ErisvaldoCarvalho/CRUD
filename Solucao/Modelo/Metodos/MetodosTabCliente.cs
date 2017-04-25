@@ -15,10 +15,45 @@ namespace Modelo
             this.editado = false;
         }
 
+        public TabCliente(int _codigo)
+        {
+            using (SqlConnection conexao = new SqlConnection("Server=.\\sqlexpress;Database=loja;Trusted_Connection=True;"))
+            {
+                try
+                {
+                    conexao.Open();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                using (SqlCommand comando = new SqlCommand())
+                {
+                    comando.Connection = conexao;
+                    comando.CommandText = "Select * From Cliente Where Codigo = @codigo";
+                    comando.Parameters.AddWithValue("@codigo", _codigo);
+
+                    using (SqlDataReader sql = comando.ExecuteReader())
+                    {
+                        if (sql.HasRows)
+                        {
+                            sql.Read();
+                            this.codigo = sql.GetInt32(sql.GetOrdinal("Codigo"));
+                            this.nome = sql.GetString(sql.GetOrdinal("Nome"));
+                            this.dataCadastro = sql.GetDateTime(sql.GetOrdinal("DataCadastro"));
+                        }
+                    }
+                    this.inserido = false;
+                    this.editado = false;
+                }
+            }
+        }
+
         public static Int32 Incrementa()
         {
             int retorno = 0;
-            using (SqlConnection conexao = new SqlConnection(""))
+            using (SqlConnection conexao = new SqlConnection("Server=.\\SQL2008;Database=TEMP;Trusted_Connection=True;"))
             {
                 conexao.Open();
                 using (SqlCommand comando = new SqlCommand())
@@ -42,9 +77,9 @@ namespace Modelo
 
         public static List<TabCliente> BuscarTodos()
         {
-            List<TabCliente> retorno = null;
+            List<TabCliente> retorno = new List<TabCliente>();
 
-            using (SqlConnection conexao = new SqlConnection(""))
+            using (SqlConnection conexao = new SqlConnection("Server=.\\SQL2008;Database=TEMP;Trusted_Connection=True;"))
             {
                 conexao.Open();
                 using (SqlCommand comando = new SqlCommand())
@@ -81,7 +116,7 @@ namespace Modelo
 
         public void Inserir()
         {
-            using (SqlConnection conexao = new SqlConnection("Server=.\\sqlexpress;Database=loja;Trusted_Connection=True;"))
+            using (SqlConnection conexao = new SqlConnection("Server=.\\SQL2008;Database=TEMP;Trusted_Connection=True;"))
             {
                 try
                 {
@@ -151,7 +186,35 @@ namespace Modelo
 
         public void Excluir()
         {
-            throw new NotImplementedException();
+            using (SqlConnection conexao = new SqlConnection("Server=.\\sqlexpress;Database=loja;Trusted_Connection=True;"))
+            {
+                try
+                {
+                    conexao.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                using (SqlCommand comando = new SqlCommand())
+                {
+                    comando.CommandText = "Delete From Cliente Where Codigo = @codigo";
+                    comando.Connection = conexao;
+
+                    comando.Parameters.AddWithValue("@codigo", this.codigo);
+
+
+                    try
+                    {
+                        comando.ExecuteNonQuery();
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                }
+            }
         }
 
         public void Gravar()
