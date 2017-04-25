@@ -43,11 +43,11 @@ namespace Modelo
 
         public Tabela()
         {
-            codigo = new Modelo.Coluna("Codigo");
+            codigo = new Coluna("Codigo");
             sequencia = new Coluna("Sequencia");
             codigoEntidade = new Coluna("CodigoEntidade");
             dataCadastro = new Coluna("DataCadastro");
-            ativo = new Modelo.Coluna("Ativo");
+            ativo = new Coluna("Ativo");
 
             sequencia.AceitaNulo = false;
             codigoEntidade.AceitaNulo = false;

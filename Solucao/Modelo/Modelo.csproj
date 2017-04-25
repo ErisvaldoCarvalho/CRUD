@@ -39,10 +39,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Coluna.cs" />
+    <Compile Include="Metodos\MetodosTabCliente.cs" />
+    <Compile Include="Modelo.cs" />
     <Compile Include="TabCategoriaProduto.cs" />
+    <Compile Include="TabCliente.cs" />
+    <Compile Include="TabContato.cs" />
     <Compile Include="Tabela.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TabProduto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Excecoes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
