@@ -15,6 +15,14 @@ namespace Modelo
             this.editado = false;
         }
 
+        public static List<TabCliente> Novo()
+        {
+            List<TabCliente> retorno = new List<TabCliente>();
+            TabCliente cliente = new TabCliente();
+            retorno.Add(cliente);
+            return retorno;
+        }
+
         public TabCliente(int _codigo)
         {
             using (SqlConnection conexao = new SqlConnection("Server=.\\sqlexpress;Database=loja;Trusted_Connection=True;"))
@@ -128,19 +136,19 @@ namespace Modelo
                 }
                 using (SqlCommand comando = new SqlCommand())
                 {
-                    comando.CommandText = "Insert Into Cliente (Codigo, Nome, DataCadastro) Values (@codigo, @nome, @datacadastro)";
+                    comando.CommandText = "Insert Into Cliente (Codigo, Nome, DataCadastro) Values (@codigo, @nome, GETDATE())";
                     comando.Connection = conexao;
 
                     comando.Parameters.AddWithValue("@codigo", this.codigo);
                     comando.Parameters.AddWithValue("@nome", this.nome);
-                    comando.Parameters.AddWithValue("@datacadastro", this.dataCadastro);
+                    //comando.Parameters.AddWithValue("@datacadastro", this.dataCadastro);
 
                     try
                     {
                         comando.ExecuteNonQuery();
                         this.inserido = false;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         throw;
                     }
@@ -151,7 +159,7 @@ namespace Modelo
 
         public void Atualizar()
         {
-            using (SqlConnection conexao = new SqlConnection("Server=.\\sqlexpress;Database=loja;Trusted_Connection=True;"))
+            using (SqlConnection conexao = new SqlConnection("Server=.\\SQL2008;Database=TEMP;Trusted_Connection=True;"))
             {
                 try
                 {
@@ -186,7 +194,7 @@ namespace Modelo
 
         public void Excluir()
         {
-            using (SqlConnection conexao = new SqlConnection("Server=.\\sqlexpress;Database=loja;Trusted_Connection=True;"))
+            using (SqlConnection conexao = new SqlConnection("Server=.\\SQL2008;Database=TEMP;Trusted_Connection=True;"))
             {
                 try
                 {

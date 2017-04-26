@@ -22,7 +22,7 @@ namespace Modelo
         public bool Editado { get { return editado; } }
 
         public int Codigo { get { return codigo; } set { codigo = value; } }
-        public string Nome { get { return nome; } set { nome = value; } }
+        public string Nome { get { return nome; } set { nome = value; editado = true; } }
         public DateTime DataCadastro { get { return dataCadastro; } set { dataCadastro = value; } }
         public List<TabContato> Contatos { get; set; }
 

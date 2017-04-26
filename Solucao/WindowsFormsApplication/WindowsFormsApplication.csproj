@@ -44,16 +44,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FormConsultaModelo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormConsultaModelo.Designer.cs">
+      <DependentUpon>FormConsultaModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCadastroModelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadastroModelo.Designer.cs">
+      <DependentUpon>FormCadastroModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormCadastroModelo.resx">
+      <DependentUpon>FormCadastroModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultaModelo.resx">
+      <DependentUpon>FormConsultaModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
