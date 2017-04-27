@@ -62,6 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="FormCadastroModelo1N.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadastroModelo1N.Designer.cs">
+      <DependentUpon>FormCadastroModelo1N.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormConsultaModelo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCadastroModelo.resx">
       <DependentUpon>FormCadastroModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCadastroModelo1N.resx">
+      <DependentUpon>FormCadastroModelo1N.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormConsultaModelo.resx">
       <DependentUpon>FormConsultaModelo.cs</DependentUpon>

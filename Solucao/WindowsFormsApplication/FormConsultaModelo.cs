@@ -40,7 +40,6 @@ namespace WindowsFormsApplication
                 frm.Text = this.Text;
                 frm.textBoxCodigo.DataBindings.Add("Text", bs, "Codigo", true, DataSourceUpdateMode.OnPropertyChanged);
                 frm.textBoxNome.DataBindings.Add("Text", bs, "Nome", true, DataSourceUpdateMode.OnPropertyChanged);
-                frm.textBoxDataCadastro.DataBindings.Add("Text", bs, "DataCadastro", true, DataSourceUpdateMode.OnPropertyChanged);
                 frm.dados = bs;
                 frm.ShowDialog();
             }
@@ -56,7 +55,6 @@ namespace WindowsFormsApplication
                 frm.Text = this.Text;
                 frm.textBoxCodigo.DataBindings.Add("Text", dados, "Codigo", true, DataSourceUpdateMode.OnPropertyChanged);
                 frm.textBoxNome.DataBindings.Add("Text", dados, "Nome", true, DataSourceUpdateMode.OnPropertyChanged);
-                frm.textBoxDataCadastro.DataBindings.Add("Text", dados, "DataCadastro", true, DataSourceUpdateMode.OnPropertyChanged);
 
                 frm.ShowDialog();
             }
@@ -72,7 +70,6 @@ namespace WindowsFormsApplication
                 frm.Text = this.Text;
                 frm.textBoxCodigo.DataBindings.Add("Text", dados, "Codigo", true, DataSourceUpdateMode.OnPropertyChanged);
                 frm.textBoxNome.DataBindings.Add("Text", dados, "Nome", true, DataSourceUpdateMode.OnPropertyChanged);
-                frm.textBoxDataCadastro.DataBindings.Add("Text", dados, "DataCadastro", true, DataSourceUpdateMode.OnPropertyChanged);
                 
                 frm.ShowDialog();
             }
