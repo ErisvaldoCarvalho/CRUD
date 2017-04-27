@@ -18,10 +18,13 @@ namespace WindowsFormsApplication
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (FormConsultaModelo frm = new WindowsFormsApplication.FormConsultaModelo())
+            TabCliente cliente = new TabCliente();
+            cliente.BuscarTodos();
+
+            using (FormConsultaModelo frm = new WindowsFormsApplication.FormConsultaModelo(cliente))
             {
-                Modelo.TabCliente cliente = new Modelo.TabCliente();
-                frm.dados.DataSource = new BindingList<TabCliente>(TabCliente.BuscarTodos());
+                //Modelo.TabCliente cliente = new Modelo.TabCliente();
+                //frm.dados.DataSource = new BindingList<ITab>(cliente.BuscarTodos());
                 frm.Text = "Cadastro de clientes";
                 frm.ShowDialog();
             }

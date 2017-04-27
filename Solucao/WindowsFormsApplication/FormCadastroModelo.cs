@@ -14,10 +14,12 @@ namespace WindowsFormsApplication
     {
         public BindingSource dados;
         private string titulo;
+        ITab tab;
 
-        public FormCadastroModelo()
+        public FormCadastroModelo(ITab _tab)
         {
             InitializeComponent();
+            tab = _tab;                        
         }
 
         public FormCadastroModelo(BindingSource _dados, string _titulo)
@@ -26,6 +28,7 @@ namespace WindowsFormsApplication
             this.dados = _dados;
             this.titulo = _titulo;
             this.label1.Text = _titulo;
+            
         }
 
         private void FormCadastroModelo_Load(object sender, EventArgs e)
@@ -47,7 +50,7 @@ namespace WindowsFormsApplication
         private void buttonGravarEContinuar_Click(object sender, EventArgs e)
         {
             Gravar();
-            dados.DataSource = new BindingList<TabCliente>(TabCliente.Novo());
+            dados.DataSource = new BindingList<ITab>(tab.Novo());
         }
 
         private void excluirButton_Click(object sender, EventArgs e)

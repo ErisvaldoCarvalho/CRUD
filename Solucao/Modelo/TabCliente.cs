@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace Modelo
 {
-    public partial class TabCliente : IDisposable
+    public partial class TabCliente : IDisposable, ITab
     {
         private bool inserido;
         private bool editado;
@@ -26,6 +26,6 @@ namespace Modelo
         public DateTime DataCadastro { get { return dataCadastro; } set { dataCadastro = value; } }
         public List<TabContato> Contatos { get; set; }
 
-
+        
     }
 }

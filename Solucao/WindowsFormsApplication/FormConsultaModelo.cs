@@ -13,11 +13,14 @@ namespace WindowsFormsApplication
     public partial class FormConsultaModelo : Form
     {
         public BindingSource dados;
-
-        public FormConsultaModelo()
+        ITab tab;
+        public FormConsultaModelo(ITab _tab)
         {
             InitializeComponent();
             dados = new BindingSource();
+            tab = _tab;
+            dados.DataSource = new BindingList<ITab>(tab.BuscarTodos());
+            dataGridViewDados.DataSource = dados;
         }
 
         //public FormConsultaModelo(BindingSource _dados, string _titulo)
@@ -44,15 +47,15 @@ namespace WindowsFormsApplication
         private void FormConsultaModelo_Load(object sender, EventArgs e)
         {
             labelTitulo.Text = this.Text;
-            dataGridViewDados.DataSource = dados;
         }
 
         private void novoButton_Click(object sender, EventArgs e)
         {
             BindingSource bs = new BindingSource();
-            bs.DataSource = new BindingList<TabCliente>(TabCliente.Novo());
+            
+            bs.DataSource = new BindingList<ITab>(tab.Novo());
 
-            using (FormCadastroModelo frm = new FormCadastroModelo())
+            using (FormCadastroModelo frm = new FormCadastroModelo(tab))
             {
                 frm.Text = this.Text;
                 frm.textBoxCodigo.DataBindings.Add("Text", bs, "Codigo", true, DataSourceUpdateMode.OnPropertyChanged);
@@ -61,13 +64,13 @@ namespace WindowsFormsApplication
                 frm.dados = bs;
                 frm.ShowDialog();
             }
-            dados.DataSource = new BindingList<TabCliente>(TabCliente.BuscarTodos());
+            dados.DataSource = new BindingList<ITab>(tab.BuscarTodos());
             dados.MoveLast();
         }
 
         private void buttonAlterar_Click(object sender, EventArgs e)
         {
-            using (FormCadastroModelo frm = new FormCadastroModelo())
+            using (FormCadastroModelo frm = new FormCadastroModelo(tab))
             {
                 frm.dados = dados;
                 frm.Text = this.Text;
@@ -77,13 +80,13 @@ namespace WindowsFormsApplication
 
                 frm.ShowDialog();
             }
-            dados.DataSource = new BindingList<TabCliente>(TabCliente.BuscarTodos());
+            dados.DataSource = new BindingList<ITab>(tab.BuscarTodos());
             dados.MoveLast();
         }
 
         private void buttonExcluir_Click(object sender, EventArgs e)
         {
-            using (FormCadastroModelo frm = new FormCadastroModelo())
+            using (FormCadastroModelo frm = new FormCadastroModelo(tab))
             {
                 frm.dados = dados;
                 frm.Text = this.Text;
@@ -93,7 +96,13 @@ namespace WindowsFormsApplication
                 
                 frm.ShowDialog();
             }
-            dados.DataSource = new BindingList<TabCliente>(TabCliente.BuscarTodos());
+            dados.DataSource = new BindingList<ITab>(tab.BuscarTodos());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridViewDados.DataSource = dados;
+            dataGridViewDados.RefreshEdit();
         }
     }
 }

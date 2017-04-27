@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Modelo
 {
-    public partial class TabCliente : IDisposable
+    public partial class TabCliente : IDisposable, ITab
     {
         public TabCliente()
         {
@@ -15,9 +15,9 @@ namespace Modelo
             this.editado = false;
         }
 
-        public static List<TabCliente> Novo()
+        public List<ITab> Novo()
         {
-            List<TabCliente> retorno = new List<TabCliente>();
+            List<ITab> retorno = new List<ITab>();
             TabCliente cliente = new TabCliente();
             retorno.Add(cliente);
             return retorno;
@@ -58,7 +58,7 @@ namespace Modelo
             }
         }
 
-        public static Int32 Incrementa()
+        public Int32 Incrementa()
         {
             int retorno = 0;
             using (SqlConnection conexao = new SqlConnection("Server=.\\SQL2008;Database=TEMP;Trusted_Connection=True;"))
@@ -83,9 +83,9 @@ namespace Modelo
             return retorno;
         }
 
-        public static List<TabCliente> BuscarTodos()
+        public List<ITab> BuscarTodos()
         {
-            List<TabCliente> retorno = new List<TabCliente>();
+            List<ITab> retorno = new List<ITab>();
 
             using (SqlConnection conexao = new SqlConnection("Server=.\\SQL2008;Database=TEMP;Trusted_Connection=True;"))
             {
@@ -108,7 +108,7 @@ namespace Modelo
 
                                 if (retorno == null)
                                 {
-                                    retorno = new List<TabCliente>();
+                                    retorno = new List<ITab>();
                                 }
                                 cliente.inserido = false;
                                 cliente.editado = false;

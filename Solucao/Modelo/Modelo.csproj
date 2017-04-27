@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Coluna.cs" />
+    <Compile Include="Interfaces\ITab.cs" />
     <Compile Include="Metodos\Backwork.cs" />
     <Compile Include="Metodos\MetodosTabCliente.cs" />
     <Compile Include="Modelo.cs" />
