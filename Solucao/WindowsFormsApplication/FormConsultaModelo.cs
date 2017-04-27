@@ -14,6 +14,7 @@ namespace WindowsFormsApplication
     {
         public BindingSource dados;
         ITab tab;
+
         public FormConsultaModelo(ITab _tab)
         {
             InitializeComponent();
@@ -22,28 +23,7 @@ namespace WindowsFormsApplication
             dados.DataSource = new BindingList<ITab>(tab.BuscarTodos());
             dataGridViewDados.DataSource = dados;
         }
-
-        //public FormConsultaModelo(BindingSource _dados, string _titulo)
-        //{
-        //    InitializeComponent();
-        //    dados = _dados;
-        //    dataGridViewDados.DataSource = dados;
-
-        //    this.Text = _titulo;
-        //    this.labelTitulo.Text = _titulo;
-        //}
-
-        //public FormConsultaModelo(BindingSource _dados, Form _formCadastro)
-        //{
-        //    InitializeComponent();
-
-        //    formCadastro = _formCadastro;
-        //    this.Text = formCadastro.Text;
-        //    this.labelTitulo.Text = formCadastro.Text;
-        //}
-
-
-
+                        
         private void FormConsultaModelo_Load(object sender, EventArgs e)
         {
             labelTitulo.Text = this.Text;

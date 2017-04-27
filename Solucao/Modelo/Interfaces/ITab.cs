@@ -21,5 +21,10 @@ namespace Modelo
         void Excluir();
 
         void Gravar();
+            
+        int Codigo { get; set; }
+        string Nome { get; set; }
+        DateTime DataCadastro { get; set; }
+        List<TabContato> Contatos { get; set; }
     }
 }

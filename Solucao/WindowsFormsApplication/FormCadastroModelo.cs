@@ -19,7 +19,7 @@ namespace WindowsFormsApplication
         public FormCadastroModelo(ITab _tab)
         {
             InitializeComponent();
-            tab = _tab;                        
+            tab = _tab;
         }
 
         public FormCadastroModelo(BindingSource _dados, string _titulo)
@@ -28,7 +28,6 @@ namespace WindowsFormsApplication
             this.dados = _dados;
             this.titulo = _titulo;
             this.label1.Text = _titulo;
-            
         }
 
         private void FormCadastroModelo_Load(object sender, EventArgs e)
@@ -44,7 +43,7 @@ namespace WindowsFormsApplication
 
         private void Gravar()
         {
-            ((TabCliente)dados.Current).Gravar();
+            ((ITab)dados.Current).Gravar();
         }
 
         private void buttonGravarEContinuar_Click(object sender, EventArgs e)
@@ -55,7 +54,7 @@ namespace WindowsFormsApplication
 
         private void excluirButton_Click(object sender, EventArgs e)
         {
-            ((TabCliente)dados.Current).Excluir();
+            ((ITab)dados.Current).Excluir();
             dados.RemoveCurrent();
             this.Close();
         }

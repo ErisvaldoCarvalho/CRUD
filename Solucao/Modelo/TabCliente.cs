@@ -13,8 +13,7 @@ namespace Modelo
         private int codigo;
         private string nome;
         private DateTime dataCadastro;
-
-
+        
         [Browsable(false)]
         public bool Inserido { get { return inserido; } }
 
@@ -25,7 +24,5 @@ namespace Modelo
         public string Nome { get { return nome; } set { nome = value; editado = true; } }
         public DateTime DataCadastro { get { return dataCadastro; } set { dataCadastro = value; } }
         public List<TabContato> Contatos { get; set; }
-
-        
     }
 }
