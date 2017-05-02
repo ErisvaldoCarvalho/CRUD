@@ -22,14 +22,6 @@ namespace WindowsFormsApplication
             tab = _tab;
         }
 
-        public FormCadastroModelo(BindingSource _dados, string _titulo)
-        {
-            InitializeComponent();
-            this.dados = _dados;
-            this.titulo = _titulo;
-            this.label1.Text = _titulo;
-        }
-
         private void FormCadastroModelo_Load(object sender, EventArgs e)
         {
             label1.Text = this.Text;
